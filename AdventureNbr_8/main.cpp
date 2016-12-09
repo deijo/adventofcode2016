@@ -27,8 +27,8 @@ int main(int argc, char *argv[])
     qDebug() << "Advent of code #8";
     qDebug() << "=================" << endl;
 
-    QStringList rawData = readFile("../AdventureNbr_7/puzzelinput.in");
-    //QStringList rawData = readFile("../AdventureNbr_7/testinput.in");
+    QStringList rawData = readFile("../AdventureNbr_8/puzzelinput.in");
+    //QStringList rawData = readFile("../AdventureNbr_8/testinput.in");
 
     // Size of display
     int colDisp = 50;
@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
 
     qDebug() << endl;
     qDebug() << "=================================";
-    qDebug() << "****   Day 8, part 1 answer  ****";
+    qDebug() << "****   Day 8, part 2 answer  ****";
     qDebug() << "=================================" << endl;
     qDebug() << "Display: ";
     for (int row = 0 ; row< rowDisp ; row++)
@@ -172,6 +172,10 @@ int main(int argc, char *argv[])
         qDebug() << println;
     }
     qDebug() << endl;
+    qDebug() << endl;
+    qDebug() << "=================================";
+    qDebug() << "****   Day 8, part 1 answer  ****";
+    qDebug() << "=================================" << endl;
     qDebug() << "Pixels lit: " << pixelslit << endl;
     qDebug() << endl;
 
