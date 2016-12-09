@@ -3,7 +3,7 @@ QT -= gui
 
 CONFIG += c++11
 
-TARGET = AdventureNbr_7
+TARGET = AdventureNbr_8
 CONFIG += console
 CONFIG -= app_bundle
 

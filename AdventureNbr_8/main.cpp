@@ -24,7 +24,7 @@ QStringList readFile(QString filename)
 
 int main(int argc, char *argv[])
 {
-    qDebug() << "Advent of code #7";
+    qDebug() << "Advent of code #8";
     qDebug() << "=================" << endl;
 
     QStringList rawData = readFile("../AdventureNbr_7/puzzelinput.in");
@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
 
     qDebug() << endl;
     qDebug() << "=================================";
-    qDebug() << "****   Day 7, part 1 answer  ****";
+    qDebug() << "****   Day 8, part 1 answer  ****";
     qDebug() << "=================================" << endl;
     qDebug() << "Display: ";
     for (int row = 0 ; row< rowDisp ; row++)
