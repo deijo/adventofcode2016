@@ -98,7 +98,7 @@ int compute(QStringList &rawData, QMap<QChar, int> &registers)
 
 int main(int argc, char *argv[])
 {
-    qDebug() << "Advent of code #10";
+    qDebug() << "Advent of code #12";
     qDebug() << "==================" << endl;
 
     QStringList rawData = readFile("../Day12/puzzelinput");
@@ -122,12 +122,12 @@ int main(int argc, char *argv[])
 
 
     qDebug() << "=================================";
-    qDebug() << "****  Day 10, part 1 answer  ****";
+    qDebug() << "****  Day 12, part 1 answer  ****";
     qDebug() << "=================================" << endl;
     qDebug() << "Answer is: " << resultPart1 << endl;
 
     qDebug() << "=================================";
-    qDebug() << "****  Day 10, part 2 answer  ****";
+    qDebug() << "****  Day 12, part 2 answer  ****";
     qDebug() << "=================================" << endl;
     qDebug() << "Answer is: " << resultPart2 << endl;
 
