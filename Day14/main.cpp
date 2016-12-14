@@ -2,19 +2,9 @@
 #include <QDebug>
 #include <QCryptographicHash>
 
-int main(int argc, char *argv[])
+
+int findKeys(QString salt, int partToMD5Iter)
 {
-    QCoreApplication a(argc, argv);
-
-    qDebug() << "Advent of code #14";
-    qDebug() << "==================" << endl;
-
-//    QString salt = "abc";
-    QString salt = "yjdafjpo";
-
-//    int partToMD5Iter = 0; // For part One
-    int partToMD5Iter = 2016;
-
     QVector<QString> keys;
     QVector<QString> generatedHashes;
 
@@ -73,8 +63,8 @@ int main(int argc, char *argv[])
 
                 if (nextFive.contains(rx))
                 {
-                    qDebug() << "Tripple Index:" << index << ", " << hashed;
-                    qDebug() << "   Five index:" << index + i << ", " << nextFive << endl;
+//                    qDebug() << "Tripple Index:" << index << ", " << hashed;
+//                    qDebug() << "   Five index:" << index + i << ", " << nextFive << endl;
                     keys.append(hashed);
                     break;
                 }
@@ -83,11 +73,49 @@ int main(int argc, char *argv[])
 
         index++;
     }
+return --index;
+}
+
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+
+    int lastIndex = 0;
+    QString testsalt = "abc";
+    QString puzzlesalt = "yjdafjpo";
+
+    qDebug() << "Advent of code #14";
+    qDebug() << "==================" << endl;
+
+    qDebug() << "Test with salt abc, part 1";
+    qDebug() << "==========================";
+
+    lastIndex = findKeys(testsalt, 0);
+
+    qDebug() << "Index: " << lastIndex << endl;
+
 
     qDebug() << "=================================";
     qDebug() << "****  Day 14, part 1 answer  ****";
-    qDebug() << "=================================" << endl;
-    qDebug() << "Index: " << index - 1;
+    qDebug() << "=================================";
+
+    lastIndex = findKeys(puzzlesalt, 0);
+    qDebug() << "Index: " << lastIndex << endl;
+
+    qDebug() << "Test with salt abc, part 2";
+    qDebug() << "==========================";
+
+    lastIndex = findKeys(testsalt, 2016);
+
+    qDebug() << "Index: " << lastIndex << endl;
+
+
+    qDebug() << "=================================";
+    qDebug() << "****  Day 14, part 2 answer  ****";
+    qDebug() << "=================================";
+
+    lastIndex = findKeys(puzzlesalt, 2016);
+    qDebug() << "Index: " << lastIndex << endl;
 
 
     exit(1);
