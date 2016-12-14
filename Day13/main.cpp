@@ -20,7 +20,9 @@ int main(int argc, char *argv[])
 
     int xSize = 50;
     int ySize = 50;
-    QChar area[ySize][xSize];
+
+    QChar area[ySize][xSize]; // For printout
+    int layout[ySize][xSize];
 
     qDebug() << "Advent of code #13";
     qDebug() << "==================" << endl;
@@ -39,10 +41,12 @@ int main(int argc, char *argv[])
             if (ones % 2) // Odd - wall
             {
                 area[y][x] = '#';
+                layout[y][x] = 0;
             }
             else
             {
                 area[y][x] = '.';
+                layout[y][x] = 1;
             }
         }
     }
@@ -68,8 +72,8 @@ int main(int argc, char *argv[])
     QVector<Coord> coords;
 //    Coord target = { 7 ,4, 0};
     Coord target = { 31 ,39, 0};
-//    Coord start = { 1 ,1, 0};
-    Coord start = { 0 ,0, 0};
+    Coord start = { 1 ,1, 0};
+//    Coord start = { 0 ,0, 0};
 
     coords.append(start);
 
@@ -78,37 +82,47 @@ int main(int argc, char *argv[])
     while (!found)
     {
         QVector<Coord> local;
+        QVector<Coord> input;
         foreach(Coord c, coords)
         {
-            if (c.iter < iter)
-            {
-                continue;
-            }
+//            if (c.iter < iter)
+//            {
+//                continue;
+//            }
 
-            if ( (c.x-1 >= 0) && (area[c.y][c.x-1] == '.') )
+            if ( (c.x-1 >= 0) && layout[c.y][c.x-1] )
             {
                 local.append({c.x-1, c.y, iter+1});
             }
-            if ( (c.x+1 < xSize) && (area[c.y][c.x+1] == '.') )
+            if ( (c.x+1 < xSize) && layout[c.y][c.x+1] )
             {
                 local.append({c.x+1, c.y, iter+1});
             }
-            if ( (c.y-1 >= 0) && (area[c.y-1][c.x] == '.') )
+            if ( (c.y-1 >= 0) && layout[c.y-1][c.x] )
             {
                 local.append({c.x, c.y-1, iter+1});
             }
-            if ( (c.y+1 < ySize) && (area[c.y+1][c.x] == '.') )
+            if ( (c.y+1 < ySize) && layout[c.y+1][c.x] )
             {
                 local.append({c.x, c.y+1, iter+1});
             }
         }
+
+        input = local;
         foreach(Coord l, local)
         {
             for(int i = 0 ; i<coords.size(); i++)
             {
-                if (l.x == coords.at(i).x && l.y == coords.at(i).y && l.iter<coords.at(i).iter)
+                if (l.x == coords.at(i).x && l.y == coords.at(i).y)
                 {
-                    coords.remove(i);
+                    if (l.iter <= coords.at(i).iter)
+                    {
+                        coords.remove(i);
+                    }
+                    else
+                    {
+                      input.removeOne(l);
+                    }
                 }
             }
 
@@ -121,7 +135,7 @@ int main(int argc, char *argv[])
             }
         }
 
-        coords.append(local);
+        coords.append(input);
 
 //        for (int y = 0 ; y<ySize; y++)
 //        {
